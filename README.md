@@ -1,7 +1,7 @@
-# #Wikipedia Application
+## Wikipedia Application
 This is a simple android application built using Wikipedia API.
 
-# Application features
+## Application features
 
 This is an amazing app :smile: , look at how much it does
   1. Users can explore random Wiki pages
