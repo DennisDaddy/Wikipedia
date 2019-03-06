@@ -6,14 +6,19 @@ import android.view.ViewGroup
 import org.dennis.wikipedia.R
 import org.dennis.wikipedia.activities.holders.CardHolder
 import org.dennis.wikipedia.activities.holders.LisItemHolder
+import org.dennis.wikipedia.activities.models.WikiPage
 
 class ArticleListItemRecyclerAdapter : RecyclerView.Adapter<LisItemHolder>() {
+    val currentResults : ArrayList<WikiPage> = ArrayList<WikiPage>()
+
     override fun getItemCount(): Int {
-        return 15 //temporary
+        return currentResults.size //temporary
     }
 
     override fun onBindViewHolder(holder: LisItemHolder, position: Int) {
         // this is where will update your view
+        var page = currentResults[position]
+        holder.updateWithPage(page)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LisItemHolder {
