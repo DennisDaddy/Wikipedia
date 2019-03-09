@@ -12,10 +12,10 @@ import org.dennis.wikipedia.R
 import org.dennis.wikipedia.activities.ArticleDetailActivity
 import org.dennis.wikipedia.activities.models.WikiPage
 
-class LisItemHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
+class ListItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val articleImageView: ImageView = itemView.findViewById<ImageView>(R.id.result_icon)
     private val titleTextView: TextView = itemView.findViewById<TextView>(R.id.result_title)
-    var currentPage: WikiPage? = null
+    private var currentPage: WikiPage? = null
 
     init {
         itemView.setOnClickListener { view: View? ->
@@ -23,16 +23,17 @@ class LisItemHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
             var pageJson = Gson().toJson(currentPage)
             detailPageIntent.putExtra("page", pageJson)
             itemView.context.startActivity(detailPageIntent)
-            itemView.context.startActivity(detailPageIntent)
         }
     }
 
+
     fun updateWithPage(page: WikiPage){
-        if (page.thumbnail !=null)
+
+        // load image lazily with picaso
+        if(page.thumbnail != null)
             Picasso.get().load(page.thumbnail!!.source).into(articleImageView)
-
         titleTextView.text = page.title
-
         currentPage = page
     }
-}
+
+    }

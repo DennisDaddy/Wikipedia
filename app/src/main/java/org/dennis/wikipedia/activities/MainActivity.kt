@@ -8,18 +8,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.dennis.wikipedia.R
 import org.dennis.wikipedia.activities.fragments.ExploreFragment
 import org.dennis.wikipedia.activities.fragments.FavoritesFragment
-import org.dennis.wikipedia.activities.fragments.HistoFragment
+import org.dennis.wikipedia.activities.fragments.HistoryFragment
 
 class MainActivity : AppCompatActivity() {
 
     private val exploreFragment: ExploreFragment
     private val favoritesFragment: FavoritesFragment
-    private val histoFragment: HistoFragment
+    private val historyFragment: HistoryFragment
 
-    init{
+    init {
         exploreFragment = ExploreFragment()
         favoritesFragment = FavoritesFragment()
-        histoFragment = HistoFragment()
+        historyFragment = HistoryFragment()
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
 
         when(item.itemId){
             R.id.navigation_explore -> transaction.replace(R.id.fragment_container, exploreFragment)
-            R.id.navigation_favorite -> transaction.replace(R.id.fragment_container, favoritesFragment)
-            R.id.navigation_history -> transaction.replace(R.id.fragment_container, histoFragment)
+            R.id.navigation_favorites -> transaction.replace(R.id.fragment_container, favoritesFragment)
+            R.id.navigation_history -> transaction.replace(R.id.fragment_container, historyFragment)
         }
-        transaction.commit()
 
+        transaction.commit()
         true
     }
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 

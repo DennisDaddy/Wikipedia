@@ -7,13 +7,13 @@
         android:title="@string/title_explore" />
 
     <item
-        android:id="@+id/navigation_favorite"
+        android:id="@+id/navigation_favorites"
         android:icon="@drawable/baseline_favorite_white_24"
-        android:title="@string/title_favorite" />
+        android:title="@string/title_favorites" />
 
     <item
         android:id="@+id/navigation_history"
-        android:icon="@drawable/baseline_history_white_24"
+        android:icon="@drawable/baseline_history_24"
         android:title="@string/title_history" />
 
 </menu>

@@ -24,16 +24,18 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class FavoritesFragment : Fragment() {
-    var favoritesRecycler: RecyclerView? = null
+
+    var favoriteRecycler: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater!!.inflate(R.layout.fragment_favorites, container, false)
+        val view =  inflater!!.inflate(R.layout.fragment_favorites, container, false)
 
-        favoritesRecycler = view.findViewById<RecyclerView>(R.id.favorites_article_recycler)
-        favoritesRecycler!!.layoutManager = LinearLayoutManager(context)
-        favoritesRecycler!!.adapter = ArticleCardRecyclerAdapter()
+        favoriteRecycler = view.findViewById<RecyclerView>(R.id.favorites_article_recycler)
+        favoriteRecycler!!.layoutManager = LinearLayoutManager(context)
+        favoriteRecycler!!.adapter = ArticleCardRecyclerAdapter()
+
         return view
     }
 

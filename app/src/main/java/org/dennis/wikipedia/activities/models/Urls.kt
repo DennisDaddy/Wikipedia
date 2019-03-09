@@ -11,7 +11,7 @@ object Urls {
                 "&gpslimit=$take" +
                 "&gpsoffset=$skip" +
                 "&prop=pageimages|info" +
-                "piprop=thumbnail|url" +
+                "&piprop=thumbnail|url" +
                 "&pithumbsize=200" +
                 "&pilimit=$take" +
                 "&wbptterms=description" +
@@ -19,9 +19,9 @@ object Urls {
                 "&inprop=url"
     }
 
-    fun getRandomUrl(take: Int) :String{
+    fun getRandomUrl(take: Int) : String{
         return BaseUrl + "?action=query" +
-                "format=json" +
+                "&format=json" +
                 "&formatversion=2" +
                 "&generator=random" +
                 "&grnnamespace=0" +
