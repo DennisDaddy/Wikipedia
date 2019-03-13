@@ -23,7 +23,7 @@ class ArticleListItemRecyclerAdapter() : RecyclerView.Adapter<ListItemHolder>() 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemHolder {
-        var cardItem = LayoutInflater.from(parent.context).inflate(R.layout.article_list_item, parent, false)
+        var cardItem = LayoutInflater.from(parent?.context).inflate(R.layout.article_list_item, parent, false)
         return ListItemHolder(cardItem)
     }
 }

@@ -12,12 +12,14 @@ import org.dennis.wikipedia.R
 import org.dennis.wikipedia.activities.ArticleDetailActivity
 import org.dennis.wikipedia.activities.models.WikiPage
 
+
 class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val articleImageView: ImageView = itemView.findViewById<ImageView>(R.id.article_image)
     private val titleTextView: TextView = itemView.findViewById<TextView>(R.id.article_title)
+
     private var currentPage: WikiPage? = null
 
-    init {
+    init{
         itemView.setOnClickListener { view: View? ->
             var detailPageIntent = Intent(itemView.context, ArticleDetailActivity::class.java)
             var pageJson = Gson().toJson(currentPage)
@@ -29,11 +31,10 @@ class CardHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun updateWithPage(page: WikiPage){
         currentPage = page
 
-         titleTextView.text = page.title
+        titleTextView.text = page.title
 
-        // load image lazily with picaso
+        // load image lazily with picasso
         if(page.thumbnail != null)
             Picasso.get().load(page.thumbnail!!.source).into(articleImageView)
     }
-
-    }
+}

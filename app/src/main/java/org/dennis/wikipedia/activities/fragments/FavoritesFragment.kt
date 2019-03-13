@@ -14,30 +14,24 @@ import org.dennis.wikipedia.R
 import org.dennis.wikipedia.activities.adapters.ArticleCardRecyclerAdapter
 import org.dennis.wikipedia.activities.adapters.ArticleListItemRecyclerAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- *
  */
 class FavoritesFragment : Fragment() {
 
-    var favoriteRecycler: RecyclerView? = null
+    var favoritesRecyler: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view =  inflater!!.inflate(R.layout.fragment_favorites, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_favorites, container, false)
 
-        favoriteRecycler = view.findViewById<RecyclerView>(R.id.favorites_article_recycler)
-        favoriteRecycler!!.layoutManager = LinearLayoutManager(context)
-        favoriteRecycler!!.adapter = ArticleCardRecyclerAdapter()
+        favoritesRecyler = view.findViewById<RecyclerView>(R.id.favorites_article_recycler);
+        favoritesRecyler!!.layoutManager = LinearLayoutManager(context)
+        favoritesRecyler!!.adapter = ArticleCardRecyclerAdapter()
 
         return view
     }
 
-
-}
+}// Required empty public constructor

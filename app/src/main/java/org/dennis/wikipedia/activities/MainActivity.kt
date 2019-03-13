@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+
         val transaction = supportFragmentManager.beginTransaction()
         transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
 
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         transaction.commit()
+
         true
     }
 

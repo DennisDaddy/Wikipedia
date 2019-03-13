@@ -5,11 +5,9 @@ import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
-import android.support.v7.widget.SearchView
-
-import kotlinx.android.synthetic.main.activity_article_detail.*
 import kotlinx.android.synthetic.main.activity_search.*
 import org.dennis.wikipedia.R
 import org.dennis.wikipedia.activities.adapters.ArticleListItemRecyclerAdapter
@@ -28,6 +26,7 @@ class SearchActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         search_results_recycler.layoutManager = LinearLayoutManager(this)
+        search_results_recycler.adapter = adapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
