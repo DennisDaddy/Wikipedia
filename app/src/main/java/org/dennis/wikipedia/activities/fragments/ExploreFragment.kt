@@ -10,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.CardView
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +57,7 @@ class ExploreFragment : Fragment() {
             context!!.startActivity(searchIntent)
         }
 
-        exploreRecycler!!.layoutManager = LinearLayoutManager(context)
+        exploreRecycler!!.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         exploreRecycler!!.adapter = adapter
 
         refresher?.setOnRefreshListener {
