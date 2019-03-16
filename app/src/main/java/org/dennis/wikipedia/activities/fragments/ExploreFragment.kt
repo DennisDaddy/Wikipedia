@@ -2,6 +2,7 @@ package org.dennis.wikipedia.activities.fragments
 
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -16,7 +17,9 @@ import kotlinx.android.synthetic.main.fragment_explore.*
 
 import org.dennis.wikipedia.R
 import org.dennis.wikipedia.activities.SearchActivity
+import org.dennis.wikipedia.activities.WikiApplication
 import org.dennis.wikipedia.activities.adapters.ArticleCardRecyclerAdapter
+import org.dennis.wikipedia.activities.managers.WikiManager
 import org.dennis.wikipedia.activities.models.WikiResult
 import org.dennis.wikipedia.activities.providers.ArticleDataProvider
 
@@ -26,12 +29,18 @@ import org.dennis.wikipedia.activities.providers.ArticleDataProvider
  *
  */
 class ExploreFragment : Fragment() {
-    private val articleProvider: ArticleDataProvider = ArticleDataProvider()
+    private var wikiManager: WikiManager? = null
 
     var searchCardView: CardView? = null
     var exploreRecycler: RecyclerView? = null
     var refresher: SwipeRefreshLayout? = null
     var adapter: ArticleCardRecyclerAdapter = ArticleCardRecyclerAdapter()
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        wikiManager = (activity!!.applicationContext as WikiApplication).wikiManager
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -63,7 +72,7 @@ class ExploreFragment : Fragment() {
         refresher?.isRefreshing = true
 
         try {
-            articleProvider.getRandom(15, { wikiResult ->
+            wikiManager?.getRandom(15, { wikiResult ->
                 adapter.currentResults.clear()
                 adapter.currentResults.addAll(wikiResult.query!!.pages)
                 activity!!.runOnUiThread {

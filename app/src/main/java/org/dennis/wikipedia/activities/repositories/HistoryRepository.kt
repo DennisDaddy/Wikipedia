@@ -10,7 +10,7 @@ import org.jetbrains.anko.db.rowParser
 class HistoryRepository(val databaseHelper: ArticleDatabaseOpenHelper) {
     private val TABLE_NAME: String = "History"
 
-    fun addHistory(page: WikiPage){
+    fun addFavorite(page: WikiPage){
         databaseHelper.use {
             insert(TABLE_NAME,
                     "id" to page.pageid,

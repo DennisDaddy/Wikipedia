@@ -11,17 +11,18 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_search.*
 import org.dennis.wikipedia.R
 import org.dennis.wikipedia.activities.adapters.ArticleListItemRecyclerAdapter
+import org.dennis.wikipedia.activities.managers.WikiManager
 import org.dennis.wikipedia.activities.providers.ArticleDataProvider
 
 class SearchActivity : AppCompatActivity() {
 
-    private val articleProvider : ArticleDataProvider = ArticleDataProvider()
+    private var wikiManager: WikiManager? = null
     private var adapter: ArticleListItemRecyclerAdapter = ArticleListItemRecyclerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-
+        wikiManager = (applicationContext as WikiApplication).wikiManager
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
@@ -51,7 +52,7 @@ class SearchActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String): Boolean {
 
                 // do the search and update the elements
-                articleProvider.search(query, 0, 20, { wikiResult ->
+                wikiManager?.search(query, 0, 20, { wikiResult ->
                     adapter.currentResults.clear()
                     adapter.currentResults.addAll(wikiResult.query!!.pages)
                     runOnUiThread { adapter.notifyDataSetChanged() }
