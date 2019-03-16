@@ -28,6 +28,10 @@ class HistoryFragment : Fragment() {
     var historyRecycler: RecyclerView? = null
     private val adapter = ArticleListItemRecyclerAdapter()
 
+    init {
+        setHasOptionsMenu(true)
+    }
+
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
