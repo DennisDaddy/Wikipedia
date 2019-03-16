@@ -10,6 +10,7 @@ import android.webkit.WebViewClient
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_article_detail.*
 import org.dennis.wikipedia.R
+import org.dennis.wikipedia.activities.WikiApplication
 import org.dennis.wikipedia.activities.managers.WikiManager
 import org.dennis.wikipedia.activities.models.WikiPage
 import org.jetbrains.anko.toast
@@ -49,10 +50,9 @@ class ArticleDetailActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.article_menu, menu)
+        menuInflater.inflate(R.menu.article_menu, menu);
         return super.onCreateOptionsMenu(menu)
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if(item!!.itemId == android.R.id.home){
@@ -60,7 +60,7 @@ class ArticleDetailActivity : AppCompatActivity() {
         }
         else if (item!!.itemId == R.id.action_favorite){
             try {
-                // determine if article article is already a favorite or not
+                // determine if article is already a favorite or not
                 if(wikiManager!!.getIsFavorite(currentPage!!.pageid!!)){
                     wikiManager!!.removeFavorite(currentPage!!.pageid!!)
                     toast("Article removed from favorites")
@@ -71,7 +71,7 @@ class ArticleDetailActivity : AppCompatActivity() {
                 }
             }
             catch (ex: Exception){
-                toast("Unable to update this article")
+                toast("Unable to update this article.")
             }
         }
         return true;
